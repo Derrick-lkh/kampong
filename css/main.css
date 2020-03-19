@@ -6,6 +6,11 @@
   -webkit-box-pack: justify;
           justify-content: space-between;
 }
+@media (max-width: 998px) {
+  .navigation {
+    display: none;
+  }
+}
 .navigation .logo-container {
   max-width: 200px;
 }
@@ -62,9 +67,16 @@
   width: 100%;
   height: 85%;
 }
+@media (max-width: 998px) {
+  .banner::before {
+    height: 80%;
+    border-radius: 0;
+  }
+}
 .banner .banner-container {
   display: -webkit-box;
   display: flex;
+  flex-wrap: wrap;
 }
 .banner .banner-container .banner-text {
   display: -webkit-box;
@@ -72,6 +84,11 @@
   -webkit-box-align: start;
           align-items: flex-start;
   margin-top: 10rem;
+}
+@media (max-width: 998px) {
+  .banner .banner-container .banner-text {
+    margin-top: 5rem;
+  }
 }
 .banner .banner-container .banner-text h1 {
   font-family: "Poppins", sans-serif;
@@ -88,6 +105,11 @@
 }
 .banner .banner-container .banner-image img {
   width: 100%;
+}
+@media (max-width: 998px) {
+  .banner .banner-container .banner-image {
+    padding-top: 5rem;
+  }
 }
 h2 {
   font-family: "Montserrat", sans-serif;
@@ -118,6 +140,12 @@ h2 {
   position: relative;
   overflow: hidden;
   padding-bottom: 5rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 992px) {
+  .step-by-step .step-item .step-container {
+    padding-bottom: 0rem;
+  }
 }
 .step-by-step .step-item .step-container:after {
   content: ". . . . . . . . . . . . . . . . . . . . . . . . .";
@@ -135,6 +163,11 @@ h2 {
   line-height: 0;
   color: #c4c4c4;
 }
+@media (max-width: 992px) {
+  .step-by-step .step-item .step-container:after {
+    content: "";
+  }
+}
 .step-by-step .step-item .no-line:after {
   content: "";
 }
@@ -143,6 +176,12 @@ h2 {
   padding-bottom: 5rem;
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 992px) {
+  .step-by-step .step-item .information {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
 }
 .step-by-step .step-item .information:after {
   content: ". . . . . . . . . . . . . . . . . . . . . . . . .";
@@ -153,6 +192,11 @@ h2 {
   font-size: 5rem;
   line-height: 0;
   color: #c4c4c4;
+}
+@media (max-width: 992px) {
+  .step-by-step .step-item .information:after {
+    content: "";
+  }
 }
 .step-by-step .step-item .information b {
   color: #f8ca1a;
@@ -167,6 +211,11 @@ h2 {
   font-size: 1.5rem;
   padding-top: 1rem;
   width: 80%;
+}
+@media (max-width: 992px) {
+  .step-by-step .step-item .information p {
+    width: 100%;
+  }
 }
 .step-by-step .step-item .infographic {
   padding: 0 2rem;
@@ -222,6 +271,9 @@ h2 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
   text-transform: capitalize;
+}
+.newsletter-section input:focus {
+  outline: none;
 }
 .newsletter-section .subscribe-btn {
   display: inline-block;
