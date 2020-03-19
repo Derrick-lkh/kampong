@@ -123,6 +123,7 @@ h2 {
 }
 .solution .solution-container .item {
   text-align: center;
+  padding: 2rem 0;
 }
 .solution .solution-container .item img {
   max-width: 120px;
@@ -335,4 +336,27 @@ footer .footer-logo p {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 1.3rem;
+}
+.animate-block {
+  overflow: hidden;
+}
+.animate-block .item {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+}
+.animate-block .step-item {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
+}
+.animate-block .banner-text {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+}
+.animate-block .banner-image {
+  position: relative;
+  bottom: -100%;
+  opacity: 0;
 }
