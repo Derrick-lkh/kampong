@@ -41,7 +41,8 @@
 .navigation .navigation-links ul li a:hover {
   text-decoration: none;
 }
-.navigation .navigation-links ul li:hover {
+.navigation .navigation-links ul li:hover a {
+  display: inline-block;
   -webkit-transform: translateY(-25%);
           transform: translateY(-25%);
 }
