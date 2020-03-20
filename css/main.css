@@ -8,7 +8,22 @@
 }
 @media (max-width: 998px) {
   .navigation {
-    display: none;
+    flex-wrap: wrap;
+  }
+}
+.navigation .menu-btn {
+  display: none;
+}
+@media (max-width: 998px) {
+  .navigation .menu-btn {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+  }
+  .navigation .menu-btn svg {
+    color: white;
+    font-size: 1.5rem;
   }
 }
 .navigation .logo-container {
@@ -23,14 +38,33 @@
   -webkit-box-align: end;
           align-items: flex-end;
 }
+@media (max-width: 998px) {
+  .navigation .navigation-links {
+    display: none;
+    width: 100%;
+    padding: 1rem 0;
+  }
+}
 .navigation .navigation-links ul {
   display: -webkit-box;
   display: flex;
   margin: 0;
   list-style: none;
 }
+@media (max-width: 998px) {
+  .navigation .navigation-links ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+}
 .navigation .navigation-links ul li {
   padding: 0 1rem;
+}
+@media (max-width: 998px) {
+  .navigation .navigation-links ul li {
+    padding: 0;
+  }
 }
 .navigation .navigation-links ul li a {
   font-family: "Poppins", sans-serif;
@@ -103,7 +137,7 @@
 }
 @media (max-width: 998px) {
   .banner .banner-container .banner-text {
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 }
 .banner .banner-container .banner-text p {
