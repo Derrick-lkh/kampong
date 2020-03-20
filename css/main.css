@@ -80,6 +80,12 @@
   -webkit-transform: translateY(-25%);
           transform: translateY(-25%);
 }
+@media (max-width: 998px) {
+  .navigation .navigation-links ul li:hover a {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
 .theme-btn {
   margin-top: 2rem;
   display: inline-block;
@@ -164,6 +170,7 @@
 @media (max-width: 998px) {
   .hover-banner::before {
     height: 60%;
+    border-radius: 0;
   }
 }
 .hover-banner .hover-container .hover-image {
