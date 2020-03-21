@@ -486,13 +486,13 @@ footer .footer-logo p {
   text-align: left;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  text-transform: capitalize;
 }
 .contact-us .form input:focus,
 .contact-us .form textarea:focus {
   outline: none;
 }
-.contact-us .form a {
+.contact-us .form .submit-btn {
+  cursor: pointer;
   text-align: center;
   margin: 0 auto;
   display: -webkit-box;
@@ -509,7 +509,7 @@ footer .footer-logo p {
   border-radius: 10px;
   letter-spacing: 0.1rem;
 }
-.contact-us .form a:hover {
+.contact-us .form .submit-btn:hover {
   background: white;
   color: #f8ca1a;
   text-decoration: none;
@@ -545,4 +545,43 @@ footer .footer-logo p {
   font-size: 1.1rem;
   text-transform: capitalize;
   margin: 0;
+}
+.error {
+  border-color: red !important;
+  color: red !important;
+}
+.error-msg {
+  color: red;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  text-transform: capitalize;
+  padding: 0 1rem;
+}
+.success-msg {
+  color: #00c72b;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 1rem;
+  text-align: center;
+  display: block;
+}
+.submit-btn {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+.loading-icon {
+  display: none;
+  max-width: 2rem;
+  margin-left: 1rem;
+}
+.loading {
+  background: white !important;
+  color: #f8ca1a !important;
+  text-decoration: none !important;
+  border: 1px solid #f8ca1a !important;
 }
