@@ -55,12 +55,13 @@
         <div class="block-content container animate-block">
             <div class="contact-us d-flex flex-wrap justify-content-between">
                 <div class="form col-12 col-lg-7">
-                    <input type="text" placeholder="Your Name" />
-                    <input type="text" placeholder="Your Email" />
-                    <textarea placeholder="Your Message" rows="7"></textarea>
+                    <input id="contact_name" type="text" placeholder="Your Name" />
+                    <input id="contact_email" type="text" placeholder="Your Email" />
+                    <textarea id="contact_message" placeholder="Your Message" rows="7"></textarea>
 
-                    <a href="#" class="submit-btn">
+                    <a class="submit-btn">
                         Submit
+                        <img class="loading-icon" src="./image/loading.gif" />
                     </a>
                 </div>
                 <div class="contact-info col-12 col-lg-4">
@@ -134,7 +135,9 @@
 <script src="./js/all.min.js" type="text/javascript"></script>
 <script src="./js/bootstrap.min.js" type="text/javascript"></script>
 <script src="./js/slick.min.js" type="text/javascript"></script>
+<script src="./js/validator.js" type="text/javascript"></script>
 <script src="./js/main.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/jitbit/HtmlSanitizer@master/HtmlSanitizer.js"></script>
 <script>
     $(document).ready(function() {
         $(".animate-block .banner-image").animate({
@@ -143,6 +146,13 @@
             },
             800
         );
+
+        $(".submit-btn").on("click", function() {
+            console.log("clicked");
+            $(".loading-icon").show();
+            $(".submit-btn").addClass("loading");
+            postreq();
+        });
 
         $(window).scroll(function() {
             var windowLocation = $(window).scrollTop() + $(window).height();
@@ -171,6 +181,76 @@
             });
         });
     });
+
+    function postreq() {
+        const name = HtmlSanitizer.SanitizeHtml($("#contact_name").val());
+        const email = HtmlSanitizer.SanitizeHtml($("#contact_email").val());
+        const message = HtmlSanitizer.SanitizeHtml($("#contact_message").val());
+
+        $(".form input").removeClass("error");
+        $(".form textarea").removeClass("error");
+        $(".form .error-msg").remove();
+        $(".form .success-msg").remove();
+
+        const checkEmail = validate(email);
+        if (name.length == 0) {
+            $("#contact_name")
+                .addClass("error")
+                .after("<span class='error-msg'>invalid field</span>");
+            $(".loading-icon").hide();
+            $(".submit-btn").removeClass("loading");
+            return;
+        } else if (!checkEmail) {
+            $("#contact_email")
+                .addClass("error")
+                .after("<span class='error-msg'>invalid field</span>");
+            $(".loading-icon").hide();
+            $(".submit-btn").removeClass("loading");
+
+            return;
+        } else if (message.length == 0) {
+            $("#contact_message")
+                .addClass("error")
+                .after("<span class='error-msg'>invalid field</span>");
+            $(".loading-icon").hide();
+            $(".submit-btn").removeClass("loading");
+
+            return;
+        } else {
+            const body = JSON.stringify({
+                name: name,
+                email: email,
+                message: message
+            });
+            var xhttp = new XMLHttpRequest();
+            xhttp.open(
+                "POST",
+                "https://us-central1-project-kampong.cloudfunctions.net/helloWorld",
+                true
+            );
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xhttp.onload = function() {
+                $(".loading-icon").hide();
+                $(".submit-btn").removeClass("loading");
+                if (xhttp.status != 200) {
+                    $(".submit-btn").after(
+                        "<span class='error-msg'>An error had occured, please try again later.</span>"
+                    );
+                } else {
+                    $("#contact_name").val("");
+                    $("#contact_email").val("");
+                    $("#contact_message").val("");
+                    $(".submit-btn").after(
+                        "<span class='success-msg'>We appreciate you contacting team kampong!. We will get back in touch with you soon!</span>"
+                    );
+                }
+            };
+            console.log("sending");
+            xhttp.send(body);
+            return;
+        }
+    }
 </script>
 
 </html>
