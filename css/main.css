@@ -384,9 +384,15 @@ h2 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .newsletter-section .subscribe-btn:hover {
   color: #f8ca1a;
+  background-color: white;
+  text-decoration: none;
+}
+.active-sub {
+  color: #f8ca1a !important;
   background-color: white;
   text-decoration: none;
 }

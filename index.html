@@ -146,10 +146,11 @@
                 <b>Coming soon</b>
                 <p>Get updated!</p>
 
-                <input type="text" class="email" placeholder="Your Email Address" />
-                <a href="#" class="subscribe-btn">
-                    subscribe
-                </a>
+                <input id="subscribe_email" type="text" class="email" placeholder="Your Email Address" />
+                <span class="subscribe-btn">
+            subscribe
+            <img class="loading-icon" src="./image/loading.gif" />
+          </span>
             </div>
         </div>
     </main>
@@ -197,8 +198,37 @@
 <script src="./js/bootstrap.min.js" type="text/javascript"></script>
 <script src="./js/slick.min.js" type="text/javascript"></script>
 <script src="./js/main.js" type="text/javascript"></script>
+
 <script>
     $(document).ready(function() {
+        $(".subscribe-btn").on("click", function() {
+            let fetchData = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: $("#subscribe_email").val()
+                })
+            };
+            console.log(fetchData.body);
+            $(".subscribe-btn").addClass("active-sub");
+            $(".loading-icon").show();
+            fetch(
+                "https://project-kampong-nyc.herokuapp.com/signup",
+                fetchData
+            ).then(res => {
+                if (res.ok) {
+                    console.log(res);
+                    $("#subscribe_email").val("");
+                    $(".loading-icon").hide();
+                    $(".subscribe-btn").removeClass("active-sub");
+                } else {
+                    console.log("error");
+                }
+            });
+        });
+
         $(".animate-block .banner-text").animate({
                 opacity: 1.0,
                 left: 0
